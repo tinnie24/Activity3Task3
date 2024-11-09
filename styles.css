@@ -1,0 +1,89 @@
+body {
+  font-family: Raleway, sans-serif;
+  background: linear-gradient(135deg, #000428, #004e92);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px #000;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 15px;
+  justify-content: center;
+  margin: 20px auto;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #1e3c72;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  position: relative;
+}
+
+.card.flipped {
+  transform: rotateY(0);
+}
+
+.card.matched {
+  background-color: #4caf50;
+  animation: pulse 1s infinite alternate;
+}
+
+.card.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #4caf50; }
+  100% { box-shadow: 0 0 20px #4caf50; }
+}
+
+#game-info {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+#victory {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: gold;
+  text-shadow: 2px 2px 8px #ff9800;
+  animation: blink 1s infinite alternate;
+  display: none;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
